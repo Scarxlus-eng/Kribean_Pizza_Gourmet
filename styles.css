@@ -54,11 +54,13 @@ header .nav .Contáctanos {
   position: relative;
 }
 
-.hero h1,
+.hero h1 {
+  font-size: 48px; /* Aumenta el tamaño del texto */
+  color: #8b0000;  /* Vino tinto */
+}
 .hero p {
-  position: relative;
-  z-index: 1;
-  color: white; /* Color del texto */
+  font-size: 24px; /* Aumenta el tamaño del texto */
+  color: #8b0000;  /* Vino tinto */
 }
 
 .container {
