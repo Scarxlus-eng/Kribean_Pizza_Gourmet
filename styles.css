@@ -45,7 +45,7 @@ header .nav .Contáctanos {
 }
 
 .hero {
-  background-image: url('images/Fondo.jpg'); /* Ruta a la imagen de fondo de la sección hero */
+  background-image: url('Images/Fondo.jpg'); /* Ruta a la imagen de fondo de la sección hero */
   background-size: cover;
   background-position: center;
   color: white;
