@@ -65,13 +65,13 @@ header .nav .Contáctanos {
 }
 
 .hero p {
-  font-size: 48px; /* Tamaño del texto */
+  font-size: 24px; /* Tamaño del texto */
   color: #8b0000;  /* Color vino tinto */
-  text-shadow: 
-    -3px -3px 0 #000, 
-    3px -3px 0 #000, 
-    -3px 3px 0 #000, 
-    3px 3px 0 #000; /* Borde negro */
+  text-shadow: none; /* Eliminar el borde actual */
+
+  /* Añadir nuevo borde */
+  border: 1px solid #000; /* Borde sólido negro */
+  padding: 10px; /* Espacio interior para separar el borde del texto */
 }
 
 .container {
