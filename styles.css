@@ -54,21 +54,8 @@ header .nav .Contáctanos {
   position: relative;
 }
 
-.hero h1{
-  font-size: 48px; /* Tamaño del texto (ajustar según necesites) */
-  color: #8b0000;  /* Color vino tinto */
-  text-shadow: 
-    0 0 4px #000, /* Sombra principal (borde) */
-    0 0 4px #000, /* Sombra principal (borde) */
-    0 0 4px #000, /* Sombra principal (borde) */
-    0 0 4px #000; /* Sombra principal (borde) */
-
-  display: inline-block; /* Para que cada letra tenga su propio borde */
-  line-height: 1; /* Ajustar el espaciado entre líneas si es necesario */
-}
-
-.hero p {
-  font-size: 24px; /* Tamaño del texto */
+.hero p{
+  font-size: 48px; /* Tamaño del texto */
   color: #8b0000;  /* Color vino tinto */
   text-shadow: 
     0 0 4px #000, /* Sombra principal (borde) */
