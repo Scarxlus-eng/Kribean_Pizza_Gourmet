@@ -37,14 +37,14 @@ function clearCart() {
 
 function placeOrder() {
   const name = prompt("Por favor, ingrese su nombre:");
-  const deliveryOption = prompt("Especifique: 'Domicilio', 'Recoger' o 'Comer':");
+  const deliveryOption = prompt("Especifique: '1. Domicilio', '2. Recoger' o '3. En el lugar':");
   let address = '';
-  if (deliveryOption.toLowerCase() === 'domicilio') {
+  if (deliveryOption.toLowerCase() === '1. domicilio') {
     address = prompt("Por favor, ingrese su dirección:");
   }
-  const paymentMethod = prompt("Método de pago: 'Bancolombia' o 'Efectivo':");
+  const paymentMethod = prompt("Método de pago: '1. Bancolombia' o '2. Efectivo':");
   let paymentDetails = '';
-  if (paymentMethod.toLowerCase() === 'bancolombia') {
+  if (paymentMethod.toLowerCase() === '1. bancolombia') {
     paymentDetails = "Haga el depósito a la cuenta de Bancolombia Ahorro a la Mano: 03186687044.";
   }
 
