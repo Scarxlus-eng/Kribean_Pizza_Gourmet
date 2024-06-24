@@ -45,7 +45,7 @@ header .nav .Contáctanos {
 }
   
 .hero {
-    background-image: url('https://imgur.com/a/logopizzeria-LIT4RGD?third_party=1');
+    background-image: url('Fondo.png');
     background-size: cover;
     background-position: center;
     color: black;
@@ -56,7 +56,7 @@ header .nav .Contáctanos {
   
 .hero h1::after, .hero p::after {
     content: '';
-    background-image: url('https://imgur.com/a/logopizzeria-LIT4RGD?third_party=1');
+    background-image: url('Fondo.png');
     background-size: cover;
     background-position: center;
     position: absolute;
