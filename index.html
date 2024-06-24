@@ -27,6 +27,9 @@
   </section>
   <div class="container">
     <h2>Menú</h2>
+    <button class="btn-primary" onclick="showBebidas()">Bebidas</button>
+    <button class="btn-primary" onclick="showPorciones()">Porciones de Pizzas</button>
+    <button class="btn-primary" onclick="showPizzaFamiliar()">Pizza Familiar x12</button>
     <div class="menu-item">
       <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
         <h3>Pizza Pollo con Jamón</h3>
@@ -104,5 +107,49 @@
     </div>
   </div>
   <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
+  <script>
+    function showBebidas() {
+      // Aquí podrías implementar una función para mostrar las bebidas disponibles
+      alert("Mostrar todas las bebidas disponibles");
+    }
+
+    function showPorciones() {
+      // Aquí podrías implementar una función para mostrar las porciones de pizzas disponibles
+      alert("Mostrar los sabores de pizzas con sus respectivos precios");
+    }
+
+    function showPizzaFamiliar() {
+      // Aquí podrías implementar una función para mostrar las pizzas familiares x12 con precios ajustados
+      alert(`Opciones de Pizza Familiar x12:
+        - Hawaiana: $54,000
+        - Jamon Con Queso: $48,000
+        - Pollo Con Jamón: $48,000
+        - Campesina: $54,000`);
+    }
+
+    // Función para añadir elementos al carrito
+    function addToCart(itemName, price) {
+      const cartItem = document.createElement('div');
+      cartItem.innerText = `${itemName} - $${price}`;
+      document.getElementById('cart-items').appendChild(cartItem);
+
+      // Actualizar total
+      const currentTotal = parseFloat(document.getElementById('total').innerText.split(':')[1]);
+      const newTotal = currentTotal + price;
+      document.getElementById('total').innerText = `Total: $${newTotal.toFixed(2)}`;
+    }
+
+    // Función para realizar el pedido
+    function placeOrder() {
+      alert('Pedido realizado. Gracias por su compra!');
+      clearCart();
+    }
+
+    // Función para limpiar el carrito
+    function clearCart() {
+      document.getElementById('cart-items').innerHTML = '';
+      document.getElementById('total').innerText = 'Total: $0';
+    }
+  </script>
 </body>
 </html>
