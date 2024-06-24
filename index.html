@@ -27,116 +27,150 @@
   </section>
   <div class="container">
     <h2>Menú</h2>
-    <button class="btn-primary" onclick="showBebidas()">Bebidas</button>
-    <button class="btn-primary" onclick="showPorciones()">Porciones de Pizzas</button>
-    <button class="btn-primary" onclick="showPizzaFamiliar()">Pizza Familiar x12</button>
-    <div class="menu-item">
-      <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
-        <h3>Pizza Pollo con Jamón</h3>
-        <span>$4000.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
-        <h3>Pizza Jamón con Queso</h3>
-        <span>$4000.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Hawaiana.jpg" alt="Pizza Hawaiana">
-        <h3>Pizza Hawaiana</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Hawaiana', 4500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Campesina.jpg" alt="Pizza Campesina">
-        <h3>Pizza Campesina</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Campesina', 4500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Pollo_Champ.jpg" alt="Pizza Champiñón con Pollo">
-        <h3>Pizza Champiñón con Pollo</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Champiñón con Pollo', 4500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Pepperoni.png" alt="Pizza Pepperoni">
-        <h3>Pizza Pepperoni</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Pepperoni', 4500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Salami.jpg" alt="Pizza Salami">
-        <h3>Pizza Salami</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Salami', 4500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
-        <h3>Botella de Agua</h3>
-        <span>$800.00</span>
-        <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/hit-500ml.jpeg" alt="Hit">
-        <h3>Hit</h3>
-        <span>$3000.00</span>
-        <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
-        <h3>Postobón 1lt</h3>
-        <span>$3500.00</span>
-        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500)">Añadir al carrito</button>
-    </div>
-    <div class="menu-item">
-        <img src="Images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
-        <h3>Coca-Cola 1.5lt</h3>
-        <span>$6500.00</span>
-        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500)">Añadir al carrito</button>
+    <button class="btn-primary" onclick="showModal('bebidas')">Bebidas</button>
+    <button class="btn-primary" onclick="showModal('porciones')">Porciones de Pizzas</button>
+    <button class="btn-primary" onclick="showModal('pizzaFamiliar')">Pizza Familiar x12</button>
+    <div class="menu-items" id="menu-items">
+      <!-- Aquí se insertarán dinámicamente los productos -->
     </div>
     <div class="cart">
       <h2>Carrito</h2>
       <div id="cart-items"></div>
       <div class="total" id="total">
-        Total: $0
+        Total: $0.00
       </div>
       <button class="btn-primary" onclick="placeOrder()">Hacer pedido</button>
       <button class="btn-primary" onclick="clearCart()">Cancelar pedido</button>
     </div>
   </div>
+  <!-- Modal para bebidas -->
+  <div id="modal-bebidas" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('bebidas')">&times;</span>
+      <h2>Bebidas</h2>
+      <div class="menu-item">
+        <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
+        <h3>Botella de Agua</h3>
+        <span>$800.00</span>
+        <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/hit-500ml.jpeg" alt="Hit">
+        <h3>Hit</h3>
+        <span>$3000.00</span>
+        <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
+        <h3>Postobón 1lt</h3>
+        <span>$3500.00</span>
+        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
+        <h3>Coca-Cola 1.5lt</h3>
+        <span>$6500.00</span>
+        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500)">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal para porciones de pizzas -->
+  <div id="modal-porciones" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('porciones')">&times;</span>
+      <h2>Porciones de Pizzas</h2>
+      <div class="menu-item">
+        <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
+        <h3>Pizza Pollo con Jamón</h3>
+        <span>$4000.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
+        <h3>Pizza Jamón con Queso</h3>
+        <span>$4000.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Hawaiana.jpg" alt="Pizza Hawaiana">
+        <h3>Pizza Hawaiana</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Hawaiana', 4500)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Campesina.jpg" alt="Pizza Campesina">
+        <h3>Pizza Campesina</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Campesina', 4500)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Pollo_Champ.jpg" alt="Pizza Champiñón con Pollo">
+        <h3>Pizza Champiñón con Pollo</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Champiñón con Pollo', 4500)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Pepperoni.png" alt="Pizza Pepperoni">
+        <h3>Pizza Pepperoni</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Pepperoni', 4500)">Añadir al carrito</button>
+      </div>
+      <div class="menu-item">
+        <img src="Images/Salami.jpg" alt="Pizza Salami">
+        <h3>Pizza Salami</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Salami', 4500)">Añadir al carrito</button>
+      </div>
+    </div>
+  </div>
+  <!-- Modal para pizza familiar -->
+  <div id="modal-pizzaFamiliar" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeModal('pizzaFamiliar')">&times;</span>
+      <h2>Pizza Familiar x12</h2>
+      <p>Seleccione el tipo de pizza:</p>
+      <select id="pizzaFamiliarType">
+        <option value="hawaiana">Hawaiana - $54,000</option>
+        <option value="jamonQueso">Jamon con Queso - $48,000</option>
+        <option value="polloJamon">Pollo con Jamón - $48,000</option>
+        <option value="campesina">Campesina - $54,000</option>
+      </select>
+      <button class="btn-primary" onclick="addPizzaFamiliar()">Añadir al carrito</button>
+    </div>
+  </div>
   <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
   <script>
-    function showBebidas() {
-      // Aquí podrías implementar una función para mostrar las bebidas disponibles
-      alert("Mostrar todas las bebidas disponibles");
+    function showModal(modalId) {
+      const modal = document.getElementById(`modal-${modalId}`);
+      modal.style.display = 'block';
     }
 
-    function showPorciones() {
-      // Aquí podrías implementar una función para mostrar las porciones de pizzas disponibles
-      alert("Mostrar los sabores de pizzas con sus respectivos precios");
-    }
-
-    function showPizzaFamiliar() {
-      // Aquí podrías implementar una función para mostrar las pizzas familiares x12 con precios ajustados
-      alert(`Opciones de Pizza Familiar x12:
-        - Hawaiana: $54,000
-        - Jamon Con Queso: $48,000
-        - Pollo Con Jamón: $48,000
-        - Campesina: $54,000`);
+    function closeModal(modalId) {
+      const modal = document.getElementById(`modal-${modalId}`);
+      modal.style.display = 'none';
     }
 
     // Función para añadir elementos al carrito
     function addToCart(itemName, price) {
       const cartItem = document.createElement('div');
-      cartItem.innerText = `${itemName} - $${price}`;
+      cartItem.innerText = `${itemName} - $${price.toFixed(2)}`;
       document.getElementById('cart-items').appendChild(cartItem);
 
       // Actualizar total
       const currentTotal = parseFloat(document.getElementById('total').innerText.split(':')[1]);
       const newTotal = currentTotal + price;
       document.getElementById('total').innerText = `Total: $${newTotal.toFixed(2)}`;
+    }
+
+    // Función para añadir pizza familiar
+    function addPizzaFamiliar() {
+      const select = document.getElementById('pizzaFamiliarType');
+      const selectedOption = select.options[select.selectedIndex];
+
+      const price = parseFloat(selectedOption.value.split(' - ')[1]);
+      addToCart(selectedOption.text.split(' - ')[0], price);
+
+      closeModal('pizzaFamiliar');
     }
 
     // Función para realizar el pedido
@@ -148,7 +182,7 @@
     // Función para limpiar el carrito
     function clearCart() {
       document.getElementById('cart-items').innerHTML = '';
-      document.getElementById('total').innerText = 'Total: $0';
+      document.getElementById('total').innerText = 'Total: $0.00';
     }
   </script>
 </body>
