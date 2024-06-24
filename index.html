@@ -26,12 +26,14 @@
     <p>Que Llevamos A Tu Mesa"</p>
   </section>
   <div class="container">
-    <h2>Menú</h2>
-    <button class="btn-primary" onclick="loadProducts('bebidas')">Bebidas</button>
-    <button class="btn-primary" onclick="loadProducts('porciones')">Porciones de Pizzas</button>
-    <button class="btn-primary" onclick="loadProducts('pizzaFamiliar')">Pizza Familiar x12</button>
-    <div class="menu-items" id="menu-items">
-      <!-- Aquí se insertarán dinámicamente los productos -->
+    <div class="menu">
+      <h2>Menú</h2>
+      <button class="btn-primary" onclick="loadProducts('bebidas')">Bebidas</button>
+      <button class="btn-primary" onclick="loadProducts('porciones')">Porciones de Pizzas</button>
+      <button class="btn-primary" onclick="loadProducts('pizzaFamiliar')">Pizza Familiar x12</button>
+      <div class="menu-items" id="menu-items">
+        <!-- Aquí se insertarán dinámicamente los productos -->
+      </div>
     </div>
     <div class="cart">
       <h2>Carrito</h2>
@@ -130,10 +132,10 @@
       <h2>Pizza Familiar x12</h2>
       <p>Seleccione el tipo de pizza:</p>
       <select id="pizzaFamiliarType">
-        <option value="hawaiana">Hawaiana - $54,000</option>
-        <option value="jamonQueso">Jamon con Queso - $48,000</option>
-        <option value="polloJamon">Pollo con Jamón - $48,000</option>
-        <option value="campesina">Campesina - $54,000</option>
+        <option value="hawaiana - 54000">Hawaiana - $54,000</option>
+        <option value="jamonQueso - 48000">Jamon con Queso - $48,000</option>
+        <option value="polloJamon - 48000">Pollo con Jamón - $48,000</option>
+        <option value="campesina - 54000">Campesina - $54,000</option>
       </select>
       <button class="btn-primary" onclick="addPizzaFamiliar()">Añadir al carrito</button>
     </div>
@@ -160,7 +162,6 @@
       modal.style.display = 'none';
     }
 
-    // Función para añadir productos al carrito
     function addToCart(productName, productPrice) {
       const cartItem = document.createElement('div');
       cartItem.classList.add('cart-item');
@@ -174,7 +175,6 @@
       document.getElementById('total').innerText = `Total: $${newTotal.toFixed(2)}`;
     }
 
-    // Función para añadir pizza familiar
     function addPizzaFamiliar() {
       const select = document.getElementById('pizzaFamiliarType');
       const selectedOption = select.options[select.selectedIndex];
@@ -185,13 +185,11 @@
       closeModal('pizzaFamiliar');
     }
 
-    // Función para realizar el pedido
     function placeOrder() {
       alert('Pedido realizado. Gracias por su compra!');
       clearCart();
     }
 
-    // Función para limpiar el carrito
     function clearCart() {
       document.getElementById('cart-items').innerHTML = '';
       document.getElementById('total').innerText = 'Total: $0.00';
