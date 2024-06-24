@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>K'ribean Pizza Gourmet</title>
+  <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos CSS externo -->
+</head>
+<body>
+  <header>
+    <img src="images/Logo.png" alt="Logo" width="300" height="250"> <!-- Reemplaza con la ruta de tu logo -->
+    <div class="Contáctanos">
+      CONTÁCTANOS
+      <div class="Telefono1">
+        +57 3113982576
+        <div class="Telefono2">
+          +57 3186687044
+        </div>
+      </div>
+    </div>
+  </header>
+  <section class="hero">
+    <h1>Pizzeria</h1>
+    <p>Bienvenidos</p>
+    <p>"K'ribean Pizza Gourmet, Un Menú Para Recorrer Los Sabores</p>
+    <p>Que Llevamos A Tu Mesa"</p>
+  </section>
+  <div class="container">
+    <h2>Menú</h2>
+    <div class="menu-item">
+      <img src="images/Pollo.jpg" alt="Pizza Pollo con Jamón">
+        <h3>Pizza Pollo con Jamón</h3>
+        <span>$4000.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Jamon.jpg" alt="Pizza Jamón con Queso">
+        <h3>Pizza Jamón con Queso</h3>
+        <span>$4000.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Hawaiana.jpg" alt="Pizza Hawaiana">
+        <h3>Pizza Hawaiana</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Hawaiana', 4500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Campesina.jpg" alt="Pizza Campesina">
+        <h3>Pizza Campesina</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Campesina', 4500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Pollo_Champ.jpg" alt="Pizza Champiñón con Pollo">
+        <h3>Pizza Champiñón con Pollo</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Champiñón con Pollo', 4500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Pepperoni.png" alt="Pizza Pepperoni">
+        <h3>Pizza Pepperoni</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Pepperoni', 4500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Salami.jpg" alt="Pizza Salami">
+        <h3>Pizza Salami</h3>
+        <span>$4500.00</span>
+        <button class="btn-primary" onclick="addToCart('Pizza Salami', 4500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
+        <h3>Botella de Agua</h3>
+        <span>$800.00</span>
+        <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/hit-500ml.jpeg" alt="Hit">
+        <h3>Hit</h3>
+        <span>$3000.00</span>
+        <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
+        <h3>Postobón 1lt</h3>
+        <span>$3500.00</span>
+        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500)">Añadir al carrito</button>
+    </div>
+    <div class="menu-item">
+        <img src="images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
+        <h3>Coca-Cola 1.5lt</h3>
+        <span>$6500.00</span>
+        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500)">Añadir al carrito</button>
+    </div>
+    <div class="cart">
+      <h2>Carrito</h2>
+      <div id="cart-items"></div>
+      <div class="total" id="total">
+        Total: $0
+      </div>
+      <button class="btn-primary" onclick="placeOrder()">Hacer pedido</button>
+      <button class="btn-primary" onclick="clearCart()">Cancelar pedido</button>
+    </div>
+  </div>
+  <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
+</body>
+</html>

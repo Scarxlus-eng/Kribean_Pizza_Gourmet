@@ -1,0 +1,150 @@
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: #000000;
+  color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
+}
+
+header .nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+header .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header .nav ul li {
+  margin: 0 15px;
+}
+
+header .nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header .nav .Contáctanos {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.hero {
+  background-image: url('images/Fondo.jpg'); /* Ruta a la imagen de fondo de la sección hero */
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 150px 20px;
+  position: relative;
+}
+
+.hero h1,
+.hero p {
+  position: relative;
+  z-index: 1;
+  color: white; /* Color del texto */
+}
+
+.container {
+  padding: 40px 20px;
+}
+
+/* Estilos adicionales para otros elementos */
+
+.menu-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.menu-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  margin-right: 20px;
+}
+
+.menu-item h3 {
+  margin: 0;
+  flex: 1;
+}
+
+.menu-item span {
+  font-size: 18px;
+  color: #333;
+  margin-right: 20px;
+}
+
+.cart {
+  margin-top: 40px;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.total {
+  font-weight: bold;
+  margin-top: 20px;
+  font-size: 24px;
+}
+
+.btn-primary {
+  background-color: #8b0000;
+  color: white;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .menu-item img {
+    margin-bottom: 20px;
+  }
+}
