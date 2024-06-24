@@ -27,9 +27,9 @@
   </section>
   <div class="container">
     <h2>Menú</h2>
-    <button class="btn-primary" onclick="showModal('bebidas')">Bebidas</button>
-    <button class="btn-primary" onclick="showModal('porciones')">Porciones de Pizzas</button>
-    <button class="btn-primary" onclick="showModal('pizzaFamiliar')">Pizza Familiar x12</button>
+    <button class="btn-primary" onclick="loadProducts('bebidas')">Bebidas</button>
+    <button class="btn-primary" onclick="loadProducts('porciones')">Porciones de Pizzas</button>
+    <button class="btn-primary" onclick="loadProducts('pizzaFamiliar')">Pizza Familiar x12</button>
     <div class="menu-items" id="menu-items">
       <!-- Aquí se insertarán dinámicamente los productos -->
     </div>
@@ -140,6 +140,16 @@
   </div>
   <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
   <script>
+    function loadProducts(category) {
+      // Ocultar todos los modales antes de mostrar uno nuevo
+      closeModal('bebidas');
+      closeModal('porciones');
+      closeModal('pizzaFamiliar');
+
+      // Mostrar el modal correspondiente a la categoría
+      showModal(category);
+    }
+
     function showModal(modalId) {
       const modal = document.getElementById(`modal-${modalId}`);
       modal.style.display = 'block';
@@ -150,15 +160,17 @@
       modal.style.display = 'none';
     }
 
-    // Función para añadir elementos al carrito
-    function addToCart(itemName, price) {
+    // Función para añadir productos al carrito
+    function addToCart(productName, productPrice) {
       const cartItem = document.createElement('div');
-      cartItem.innerText = `${itemName} - $${price.toFixed(2)}`;
+      cartItem.classList.add('cart-item');
+      cartItem.innerHTML = `
+        <span>${productName} - $${productPrice.toFixed(2)}</span>`;
       document.getElementById('cart-items').appendChild(cartItem);
 
       // Actualizar total
       const currentTotal = parseFloat(document.getElementById('total').innerText.split(':')[1]);
-      const newTotal = currentTotal + price;
+      const newTotal = currentTotal + productPrice;
       document.getElementById('total').innerText = `Total: $${newTotal.toFixed(2)}`;
     }
 
