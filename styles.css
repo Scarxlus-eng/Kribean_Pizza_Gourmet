@@ -68,10 +68,10 @@ header .nav .Contáctanos {
   font-size: 24px; /* Tamaño del texto */
   color: #8b0000;  /* Color vino tinto */
   text-shadow: 
-    -3px -3px 0 #000, 
-    3px -3px 0 #000, 
-    -3px 3px 0 #000, 
-    3px 3px 0 #000; /* Borde negro */
+    -4px -4px 0 #000, 
+    4px -4px 0 #000, 
+    -4px 4px 0 #000, 
+    4px 4px 0 #000; /* Borde negro */
 }
 
 .container {
