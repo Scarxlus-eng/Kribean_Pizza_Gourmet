@@ -13,7 +13,7 @@ body {
   margin: 20px;
 }
 
-.menu {
+.menu, .cart {
   flex: 1;
   margin-right: 20px;
   background-color: #fff;
@@ -21,7 +21,7 @@ body {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
-.menu h2 {
+.menu h2, .cart h2 {
   margin-top: 0;
   font-size: 24px;
 }
@@ -52,7 +52,7 @@ body {
   color: #888;
 }
 
-.menu-item button {
+.menu-item button, .btn-primary {
   display: block;
   margin-top: 10px;
   padding: 10px;
@@ -63,30 +63,12 @@ body {
   cursor: pointer;
 }
 
-.menu-item button:hover {
+.menu-item button:hover, .btn-primary:hover {
   background-color: #45a049;
-}
-
-.cart {
-  flex: 1;
-  background-color: #fff;
-  padding: 20px;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
-.cart h2 {
-  margin-top: 0;
-  font-size: 24px;
 }
 
 .cart-items {
   margin-bottom: 20px;
-}
-
-.cart-item {
-  padding: 10px;
-  background-color: #f9f9f9;
-  margin-bottom: 5px;
 }
 
 .total {
@@ -96,21 +78,11 @@ body {
 }
 
 .btn-primary {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
   margin-top: 10px;
-  cursor: pointer;
-  border-radius: 5px;
-}
-
-.btn-primary:hover {
-  background-color: #45a049;
 }
 
 /* Estilos para modales */
