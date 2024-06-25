@@ -221,6 +221,9 @@
   </div>
 
   <script>
+    let cart = [];
+    let total = 0;
+
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.menu-section');
       sections.forEach(section => {
@@ -240,58 +243,68 @@
       input.value = value;
     }
 
-    function addToCart(item, price, quantityId) {
+    function addToCart(name, price, quantityId) {
       const quantity = document.getElementById(quantityId).value;
       if (quantity > 0) {
-        const cartItems = document.getElementById('cart-items');
-        let cartItem = document.getElementById('cart-' + item);
-        if (cartItem) {
-          const cartQuantity = cartItem.querySelector('.cart-quantity');
-          cartQuantity.textContent = parseInt(cartQuantity.textContent) + parseInt(quantity);
-        } else {
-          cartItem = document.createElement('div');
-          cartItem.id = 'cart-' + item;
-          cartItem.innerHTML = `
-            <span>${item}</span>
-            <span>$${price}</span>
-            <span class="cart-quantity">${quantity}</span>
-            <button onclick="removeFromCart('${item}', ${price}, '${quantityId}')">-</button>
-          `;
-          cartItems.appendChild(cartItem);
+        for (let i = 0; i < quantity; i++) {
+          cart.push({name, price});
         }
-        updateCartTotal();
+        updateCart();
       }
     }
 
-    function removeFromCart(item, price, quantityId) {
-      const cartItem = document.getElementById('cart-' + item);
-      if (cartItem) {
-        const cartQuantity = cartItem.querySelector('.cart-quantity');
-        let newQuantity = parseInt(cartQuantity.textContent) - 1;
-        if (newQuantity <= 0) {
-          cartItem.remove();
-        } else {
-          cartQuantity.textContent = newQuantity;
-        }
-        updateCartTotal();
-      }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
     }
 
-    function updateCartTotal() {
-      const cartItems = document.getElementById('cart-items').children;
-      let total = 0;
-      Array.from(cartItems).forEach(item => {
-        const price = parseFloat(item.children[1].textContent.replace('$', ''));
-        const quantity = parseInt(item.children[2].textContent);
-        total += price * quantity;
-      });
-      document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
-    }
+    function updateCart() {
+  const cartItems = document.getElementById('cart-items');
+  cartItems.innerHTML = '';
+  total = 0;
 
-    function placeOrder() {
-      alert('¡Gracias por tu pedido!');
-      // Aquí puedes añadir la lógica para enviar el pedido al servidor o procesarlo de alguna manera
-    }
-  </script>
-</body>
-</html>
+  cart.forEach((item, index) => {
+    total += item.price;
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <span>${item.name}</span>
+        <span>$${item.price}</span>
+        <button class="btn-primary" onclick="removeFromCart(${index})">Quitar</button>
+      </div>
+    `;
+  });
+
+  document.getElementById('cart-total').innerText = `Total: $${total}`;
+}
+
+function clearCart() {
+  cart = [];
+  updateCart();
+}
+
+function placeOrder() {
+  const name = prompt("Por favor, ingrese su nombre:");
+  const deliveryOption = prompt("Especifique: 'Domicilio', 'Recoger' o 'En el lugar':");
+  let address = '';
+  if (deliveryOption.toLowerCase() === 'domicilio') {
+    address = prompt("Por favor, ingrese su dirección:");
+  }
+  const paymentMethod = prompt("Método de pago: 'Bancolombia' o 'Efectivo':");
+  let paymentDetails = '';
+  if (paymentMethod.toLowerCase() === 'bancolombia') {
+    paymentDetails = "Haga el depósito a la cuenta de Bancolombia Ahorro a la Mano: 03186687044.";
+  }
+
+  let orderDetails = `Pedido de ${name}\nOpción de entrega: ${deliveryOption}\n`;
+  if (address) {
+    orderDetails += `Dirección: ${address}\n`;
+  }
+  orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total}\nProductos:\n`;
+
+  cart.forEach(item => {
+    orderDetails += `- ${item.name}: $${item.price}\n`;
+  });
+
+  const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
+  window.location.href = whatsappUrl;
+}
