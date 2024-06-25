@@ -56,9 +56,7 @@ header .nav .Contáctanos {
   
 .hero::before {
     content: '';
-    background-image: url('Fondo.png');
-    background-size: cover;
-    background-position: center;
+    background: inherit; /* Esto toma la misma imagen de fondo de .hero */
     position: absolute;
     top: 0;
     left: 0;
