@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>K'ribean Pizza Gourmet</title>
   <link rel="stylesheet" href="styles.css"> <!-- Enlace al archivo de estilos CSS externo -->
-  <link rel="icon" href="favicon.ico" type="Image/Logo.ico">
+  <link rel="icon" href="favicon.ico" type="image/x-icon"> <!-- Enlace al favicon -->
 </head>
 <body>
   <header>
@@ -20,22 +20,27 @@
       </div>
     </div>
   </header>
+  
   <section class="hero">
     <h1>Bienvenidos</h1>
     <p>K'ribean Pizza Gourmet</p>
     <p>"Un Menú Para Recorrer Los Sabores Que Llevamos A Tu Mesa"</p>
   </section>
+  
   <div class="container">
     <h2>Menú</h2>
+
+    <!-- Botones para desplegar y plegar los menús -->
     <button class="toggle-btn" onclick="toggleSection('pizzas')">
       Pizzas Por Porción
-      <span class="arrow">▼</span>
+      <span class="arrow" id="arrow-pizzas">▼</span>
     </button>
     <button class="toggle-btn" onclick="toggleSection('bebidas')">
       Bebidas
-      <span class="arrow">▼</span>
+      <span class="arrow" id="arrow-bebidas">▼</span>
     </button>
 
+    <!-- Menú de Pizzas -->
     <div id="pizzas" class="menu-section">
       <div class="menu-item">
         <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
@@ -49,9 +54,10 @@
         <span>$4000.00</span>
         <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al carrito</button>
       </div>
-      <!-- Resto de las pizzas -->
+      <!-- Aquí continúan las demás pizzas -->
     </div>
 
+    <!-- Menú de Bebidas -->
     <div id="bebidas" class="menu-section hide">
       <div class="menu-item">
         <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
@@ -65,9 +71,10 @@
         <span>$3000.00</span>
         <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al carrito</button>
       </div>
-      <!-- Resto de las bebidas -->
+      <!-- Aquí continúan las demás bebidas -->
     </div>
 
+    <!-- Carrito de Compras -->
     <div class="cart">
       <h2>Carrito</h2>
       <div id="cart-items"></div>
@@ -78,6 +85,7 @@
       <button class="btn-primary" onclick="clearCart()">Cancelar pedido</button>
     </div>
   </div>
+
   <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
 </body>
 </html>
