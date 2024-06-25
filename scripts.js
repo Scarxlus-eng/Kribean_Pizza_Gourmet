@@ -1,31 +1,10 @@
 let cart = [];
 let total = 0;
 
-function toggleSection(sectionId) {
-  const sections = document.querySelectorAll('.menu-section');
-  sections.forEach(section => {
-    if (section.id === sectionId) {
-      section.style.display = section.style.display === 'none' ? 'block' : 'none';
-    } else {
-      section.style.display = 'none';
-    }
-  });
-}
-
-function changeQuantity(id, delta) {
-  const input = document.getElementById(id);
-  let value = parseInt(input.value) + delta;
-  if (value < 0) value = 0;
-  if (value > 50) value = 50;
-  input.value = value;
-}
-
 function addToCart(name, price, quantityId) {
   const quantity = document.getElementById(quantityId).value;
   if (quantity > 0) {
-    for (let i = 0; i < quantity; i++) {
-      cart.push({ name, price });
-    }
+    cart.push({name, price, quantity: parseInt(quantity)});
     updateCart();
   }
 }
@@ -41,22 +20,18 @@ function updateCart() {
   total = 0;
 
   cart.forEach((item, index) => {
-    total += item.price;
+    total += item.price * item.quantity;
     cartItems.innerHTML += `
       <div class="cart-item">
         <span>${item.name}</span>
-        <span>$${item.price}</span>
+        <span>$${item.price * item.quantity}</span>
+        <span>${item.quantity}</span>
         <button class="btn-primary" onclick="removeFromCart(${index})">Quitar</button>
       </div>
     `;
   });
 
-  document.getElementById('cart-total').innerText = `Total: $${total}`;
-}
-
-function clearCart() {
-  cart = [];
-  updateCart();
+  document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
 }
 
 function placeOrder() {
@@ -79,9 +54,14 @@ function placeOrder() {
   orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total}\nProductos:\n`;
 
   cart.forEach(item => {
-    orderDetails += `- ${item.name}: $${item.price}\n`;
+    orderDetails += `- ${item.name}: $${item.price * item.quantity}\n`;
   });
 
   const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
-  window.location.href = whatsappUrl;
+  window.open(whatsappUrl, '_blank');
+}
+
+function clearCart() {
+  cart = [];
+  updateCart();
 }
