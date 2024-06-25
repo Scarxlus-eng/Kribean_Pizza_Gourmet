@@ -52,6 +52,7 @@ header .nav .Contáctanos {
     text-align: center;
     padding: 150px 20px;
     position: relative;
+    height: 100vh; /* Asegura que la sección ocupe toda la pantalla */
 }
   
 .hero::before {
