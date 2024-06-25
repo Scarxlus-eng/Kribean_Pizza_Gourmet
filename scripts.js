@@ -61,3 +61,9 @@ function placeOrder() {
   const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
   window.location.href = whatsappUrl;
 }
+
+// Función para controlar la visibilidad de las secciones
+function toggleSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  section.classList.toggle('hide');
+}
