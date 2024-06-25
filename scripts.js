@@ -2,34 +2,31 @@ let cart = [];
 let total = 0;
 
 function toggleSection(sectionId) {
-  const section = document.getElementById(sectionId);
   const sections = document.querySelectorAll('.menu-section');
-
-  sections.forEach(sec => {
-    if (sec !== section) {
-      sec.style.display = 'none';
+  sections.forEach(section => {
+    if (section.id === sectionId) {
+      section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    } else {
+      section.style.display = 'none';
     }
   });
-
-  section.style.display = section.style.display === 'block' ? 'none' : 'block';
 }
 
-function changeQuantity(inputId, delta) {
-  const input = document.getElementById(inputId);
+function changeQuantity(id, delta) {
+  const input = document.getElementById(id);
   let value = parseInt(input.value) + delta;
   if (value < 0) value = 0;
   if (value > 50) value = 50;
   input.value = value;
 }
 
-function addToCart(name, price, inputId) {
-  const quantity = parseInt(document.getElementById(inputId).value);
+function addToCart(name, price, quantityId) {
+  const quantity = document.getElementById(quantityId).value;
   if (quantity > 0) {
     for (let i = 0; i < quantity; i++) {
       cart.push({ name, price });
     }
     updateCart();
-    document.getElementById(inputId).value = 0;
   }
 }
 
@@ -54,7 +51,7 @@ function updateCart() {
     `;
   });
 
-  document.getElementById('total').innerText = `Total: $${total}`;
+  document.getElementById('cart-total').innerText = `Total: $${total}`;
 }
 
 function clearCart() {
