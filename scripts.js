@@ -36,12 +36,27 @@ function updateCart() {
 
 function placeOrder() {
   const name = prompt("Por favor, ingrese su nombre:");
+  if (!name) {
+    alert("Por favor ingrese su nombre para continuar con el pedido.");
+    return;
+  }
+
   const deliveryOption = prompt("Especifique: 'Domicilio', 'Recoger' o 'En el lugar':");
   let address = '';
-  if (deliveryOption.toLowerCase() === 'domicilio') {
+  if (deliveryOption && deliveryOption.toLowerCase() === 'domicilio') {
     address = prompt("Por favor, ingrese su dirección:");
+    if (!address) {
+      alert("Por favor ingrese su dirección para el pedido a domicilio.");
+      return;
+    }
   }
+
   const paymentMethod = prompt("Método de pago: 'Bancolombia' o 'Efectivo':");
+  if (!paymentMethod) {
+    alert("Por favor seleccione un método de pago para continuar.");
+    return;
+  }
+
   let paymentDetails = '';
   if (paymentMethod.toLowerCase() === 'bancolombia') {
     paymentDetails = "Haga el depósito a la cuenta de Bancolombia Ahorro a la Mano: 03186687044.";
@@ -51,14 +66,14 @@ function placeOrder() {
   if (address) {
     orderDetails += `Dirección: ${address}\n`;
   }
-  orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total}\nProductos:\n`;
+  orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total.toFixed(2)}\nProductos:\n`;
 
   cart.forEach(item => {
-    orderDetails += `- ${item.name}: $${item.price * item.quantity}\n`;
+    orderDetails += `- ${item.name}: $${(item.price * item.quantity).toFixed(2)} x ${item.quantity}\n`;
   });
 
   const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
-  window.open(whatsappUrl, '_blank');
+  window.open(whatsappUrl, '_blank'); // Abre el enlace en una nueva pestaña
 }
 
 function clearCart() {
