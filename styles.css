@@ -45,7 +45,7 @@ header .nav .Contáctanos {
 }
   
 .hero {
-    background-image: url('Fondo.png');
+    background-image: <img src= "Fondo.png";
     background-size: cover;
     background-position: center;
     color: black;
