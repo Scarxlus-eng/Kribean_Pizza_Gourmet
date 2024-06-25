@@ -221,6 +221,9 @@
   </div>
 
   <script>
+    let cart = [];
+    let total = 0;
+
     function toggleSection(sectionId) {
       const sections = document.querySelectorAll('.menu-section');
       sections.forEach(section => {
@@ -240,58 +243,24 @@
       input.value = value;
     }
 
-    function addToCart(item, price, quantityId) {
+    function addToCart(name, price, quantityId) {
       const quantity = document.getElementById(quantityId).value;
       if (quantity > 0) {
-        const cartItems = document.getElementById('cart-items');
-        let cartItem = document.getElementById('cart-' + item);
-        if (cartItem) {
-          const cartQuantity = cartItem.querySelector('.cart-quantity');
-          cartQuantity.textContent = parseInt(cartQuantity.textContent) + parseInt(quantity);
-        } else {
-          cartItem = document.createElement('div');
-          cartItem.id = 'cart-' + item;
-          cartItem.innerHTML = `
-            <span>${item}</span>
-            <span>$${price}</span>
-            <span class="cart-quantity">${quantity}</span>
-            <button onclick="removeFromCart('${item}', ${price}, '${quantityId}')">-</button>
-          `;
-          cartItems.appendChild(cartItem);
+        for (let i = 0; i < quantity; i++) {
+          cart.push({name, price});
         }
-        updateCartTotal();
+        updateCart();
       }
     }
 
-    function removeFromCart(item, price, quantityId) {
-      const cartItem = document.getElementById('cart-' + item);
-      if (cartItem) {
-        const cartQuantity = cartItem.querySelector('.cart-quantity');
-        let newQuantity = parseInt(cartQuantity.textContent) - 1;
-        if (newQuantity <= 0) {
-          cartItem.remove();
-        } else {
-          cartQuantity.textContent = newQuantity;
-        }
-        updateCartTotal();
-      }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
     }
 
-    function updateCartTotal() {
-      const cartItems = document.getElementById('cart-items').children;
-      let total = 0;
-      Array.from(cartItems).forEach(item => {
-        const price = parseFloat(item.children[1].textContent.replace('$', ''));
-        const quantity = parseInt(item.children[2].textContent);
-        total += price * quantity;
-      });
-      document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
-    }
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      total = 0;
 
-    function placeOrder() {
-      alert('¡Gracias por tu pedido!');
-      // Aquí puedes añadir la lógica para enviar el pedido al servidor o procesarlo de alguna manera
-    }
-  </script>
-</body>
-</html>
+      cart.forEach((item,
