@@ -3,6 +3,10 @@ body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    background-image: url('Fondo.jpg'); /* Ruta relativa a la ubicación del archivo CSS */
+    background-size: cover; /* Ajusta el tamaño de la imagen para cubrir todo el fondo */
+    background-position: center; /* Centrar la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
 }
   
 header {
