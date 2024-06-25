@@ -1,98 +1,95 @@
-/* Estilos generales */
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Arial', sans-serif;
   margin: 0;
   padding: 0;
-  background-color: #f4f4f4; /* Color de fondo general */
-}
-
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 20px;
+  box-sizing: border-box;
 }
 
 header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-  background-color: #8b0000; /* Color de fondo del encabezado */
+  background-color: #000000;
   color: white;
+  padding: 20px 0;
+  text-align: center;
+  position: relative;
 }
 
-header img {
-  max-width: 100%;
-  height: auto;
-}
-
-.contact-info {
+header .nav {
   display: flex;
-  flex-direction: column;
-  align-items: flex-end;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-.contact-info .phone {
-  font-size: 16px;
+header .nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+
+header .nav ul li {
+  margin: 0 15px;
+}
+
+header .nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+header .nav .Contáctanos {
+  font-size: 14px;
+  text-align: center;
+  width: 100%;
   margin-top: 10px;
 }
 
 .hero {
-  background-image: url('Images/background.jpg'); /* Imagen de fondo del héroe */
+  background-image: url("Images/Fondo.jpg");
   background-size: cover;
   background-position: center;
   text-align: center;
-  padding: 100px 0;
-  color: white;
+  padding: 150px 20px;
+  position: relative;
+  height: 100vh; /* Asegura que la sección ocupe toda la pantalla */
+}
+
+.hero::before {
+  content: '';
+  background: inherit; /* Esto toma la misma imagen de fondo de .hero */
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  opacity: 0.7;
+}
+
+.hero h1, .hero p {
+  position: relative;
+  z-index: 1;
 }
 
 .hero h1 {
-  font-size: 3em;
-  margin-bottom: 20px;
+  font-size: 48px; /* Tamaño del texto */
+  color: #8b0000;  /* Color vino tinto */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Borde negro */
 }
 
 .hero p {
-  font-size: 1.5em;
+  font-size: 24px; /* Tamaño del texto */
+  color: #8b0000;  /* Color vino tinto */
+  text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000; /* Borde negro */
 }
 
-h2 {
-  text-align: center;
-  margin-bottom: 30px;
-}
-
-/* Estilos para los botones de desplegar/plegar y flechas */
-.toggle-btn {
-  background-color: #8b0000;
-  color: white;
-  padding: 10px 20px;
-  text-decoration: none;
-  font-size: 16px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  margin-bottom: 10px;
-  display: block;
-  margin: 0 auto 10px;
-}
-
-.toggle-btn:hover {
-  background-color: #5c001e; /* Color vino tinto más oscuro al pasar el mouse */
-}
-
-.arrow {
-  margin-left: 10px;
+.container {
+  padding: 40px 20px;
 }
 
 .menu-section {
-  display: none; /* Inicialmente oculto */
-}
-
-.show {
-  display: block; /* Mostrar el menú */
-}
-
-.hide {
-  display: none; /* Ocultar el menú */
+  display: none;
+  margin-top: 20px;
 }
 
 .menu-item {
@@ -114,6 +111,7 @@ h2 {
 
 .menu-item h3 {
   margin: 0;
+  flex: 1;
 }
 
 .menu-item span {
@@ -122,9 +120,38 @@ h2 {
   margin-right: 20px;
 }
 
+.quantity-control {
+  display: flex;
+  align-items: center;
+}
+
+.quantity-control button {
+  background-color: #8b0000;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.quantity-control input {
+  width: 50px;
+  text-align: center;
+  border: 1px solid #ccc;
+  margin: 0 10px;
+}
+
 .cart {
   margin-top: 40px;
-  text-align: center;
+}
+
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding: 20px;
+  background-color: white;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
 .total {
@@ -145,7 +172,24 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  .toggle-btn {
-    padding: 8px 16px;
+  .hero {
+    padding: 100px 20px;
+  }
+
+  .hero h1 {
+    font-size: 36px;
+  }
+
+  .hero p {
+    font-size: 20px;
+  }
+
+  .menu-item {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .menu-item img {
+    margin-bottom: 20px;
   }
 }
