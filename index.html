@@ -10,20 +10,16 @@
 <body>
   <header>
     <img src="Images/Logo.png" alt="Logo" width="300" height="250">
-    <div class="Contáctanos">
-      CONTÁCTANOS
-      <div class="Telefono1">
-        +57 3113982576
-        <div class="Telefono2">
-          +57 3186687044
-        </div>
+    <div class="contact-info">
+      <div class="phone">
+        <span>+57 3113982576</span>
+        <span>+57 3186687044</span>
       </div>
     </div>
   </header>
   
   <section class="hero">
-    <h1>Bienvenidos</h1>
-    <p>K'ribean Pizza Gourmet</p>
+    <h1>Bienvenidos a K'ribean Pizza Gourmet</h1>
     <p>"Un Menú Para Recorrer Los Sabores Que Llevamos A Tu Mesa"</p>
   </section>
   
@@ -125,76 +121,6 @@
       <button class="btn-primary" onclick="clearCart()">Cancelar pedido</button>
     </div>
   </div>
-
-  <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
-
-  <script>
-    let cart = [];
-    let total = 0;
-
-    function addToCart(name, price) {
-      cart.push({name, price});
-      updateCart();
-    }
-
-    function removeFromCart(index) {
-      cart.splice(index, 1);
-      updateCart();
-    }
-
-    function updateCart() {
-      const cartItems = document.getElementById('cart-items');
-      cartItems.innerHTML = '';
-      total = 0;
-
-      cart.forEach((item, index) => {
-        total += item.price;
-        cartItems.innerHTML += `
-          <div class="cart-item">
-            <span>${item.name}</span>
-            <span>$${item.price}</span>
-            <button class="btn-primary" onclick="removeFromCart(${index})">Quitar</button>
-          </div>
-        `;
-      });
-
-      document.getElementById('total').innerText = `Total: $${total}`;
-    }
-
-    function clearCart() {
-      cart = [];
-      updateCart();
-    }
-
-    function placeOrder() {
-      const name = prompt("Por favor, ingrese su nombre:");
-      const deliveryOption = prompt("Especifique: 'Domicilio', 'Recoger' o 'En el lugar':");
-      let address = '';
-      if (deliveryOption.toLowerCase() === 'domicilio') {
-        address = prompt("Por favor, ingrese su dirección:");
-      }
-      const paymentMethod = prompt("Método de pago: 'Bancolombia' o 'Efectivo':");
-      let paymentDetails = '';
-      if (paymentMethod.toLowerCase() === 'bancolombia') {
-        paymentDetails = "Haga el depósito a la cuenta de Bancolombia Ahorro a la Mano: 03186687044.";
-      }
-
-      let orderDetails = `Pedido de ${name}\nOpción de entrega: ${deliveryOption}\n`;
-      if (address) {
-        orderDetails += `Dirección: ${address}\n`;
-      }
-      orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total}\nProductos:\n`;
-
-      cart.forEach(item => {
-        orderDetails += `- ${item.name}: $${item.price}\n`;
-      });
-
-      const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
-      window.location.href = whatsappUrl;
-    }
-  </script>
-</body>
-</html>
 
   <script src="scripts.js"></script> <!-- Enlace al archivo de script JavaScript externo -->
 </body>
