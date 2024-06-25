@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>K'ribean Pizza Gourmet</title>
   <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="Images/Logo.icon"> <!-- Añadir favicon -->
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -285,6 +286,11 @@
         total += price * quantity;
       });
       document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
+    }
+
+    function placeOrder() {
+      alert('¡Gracias por tu pedido!');
+      // Aquí puedes añadir la lógica para enviar el pedido al servidor o procesarlo de alguna manera
     }
   </script>
 </body>
