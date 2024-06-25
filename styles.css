@@ -1,3 +1,65 @@
+/* Estilos generales */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f4f4f4; /* Color de fondo general */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #8b0000; /* Color de fondo del encabezado */
+  color: white;
+}
+
+header img {
+  max-width: 100%;
+  height: auto;
+}
+
+.contact-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.contact-info .phone {
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.hero {
+  background-image: url('Images/background.jpg'); /* Imagen de fondo del héroe */
+  background-size: cover;
+  background-position: center;
+  text-align: center;
+  padding: 100px 0;
+  color: white;
+}
+
+.hero h1 {
+  font-size: 3em;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.5em;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
 /* Estilos para los botones de desplegar/plegar y flechas */
 .toggle-btn {
   background-color: #8b0000;
@@ -9,10 +71,16 @@
   border-radius: 5px;
   cursor: pointer;
   margin-bottom: 10px;
+  display: block;
+  margin: 0 auto 10px;
 }
 
 .toggle-btn:hover {
   background-color: #5c001e; /* Color vino tinto más oscuro al pasar el mouse */
+}
+
+.arrow {
+  margin-left: 10px;
 }
 
 .menu-section {
@@ -56,6 +124,7 @@
 
 .cart {
   margin-top: 40px;
+  text-align: center;
 }
 
 .total {
