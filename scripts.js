@@ -72,7 +72,7 @@ function placeOrder() {
     orderDetails += `- ${item.name}: $${(item.price * item.quantity).toFixed(2)} x ${item.quantity}\n`;
   });
 
-  const whatsappUrl = `https://wa.me/3186687044?text=${encodeURIComponent(orderDetails)}`;
+  const whatsappUrl = `https://api.whatsapp.com/send?phone=573186687044&text=${encodeURIComponent(orderDetails)}`;
   window.open(whatsappUrl, '_blank'); // Abre el enlace en una nueva pestaña
 }
 
