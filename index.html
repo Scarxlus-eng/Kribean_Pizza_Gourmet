@@ -6,6 +6,59 @@
   <title>K'ribean Pizza Gourmet</title>
   <link rel="stylesheet" href="styles.css">
   <link rel="icon" href="Images/Logo.icon"> <!-- Añadir favicon -->
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    .header, .hero, .menu-section, #cart {
+      margin: 20px;
+    }
+    h2 {
+      font-size: 24px;
+      margin-bottom: 10px;
+    }
+    .menu-item {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+    .quantity-control {
+      display: flex;
+      align-items: center;
+    }
+    .quantity-control button {
+      width: 30px;
+      height: 30px;
+    }
+    .quantity-control input {
+      width: 50px;
+      text-align: center;
+      margin: 0 10px;
+    }
+    #cart {
+      border-top: 2px solid #ccc;
+      padding-top: 10px;
+    }
+    #cart h2, #cart-total {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+    }
+    #cart-items div {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 10px;
+    }
+    .btn-primary {
+      background-color: #007BFF;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn-primary:hover {
+      background-color: #0056b3;
+    }
+  </style>
 </head>
 <body>
   <header>
@@ -164,6 +217,7 @@
     <h2>Carrito</h2>
     <div id="cart-items"></div>
     <div id="cart-total"></div>
+    <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
   </div>
 
   <script>
@@ -232,6 +286,11 @@
         total += price * quantity;
       });
       document.getElementById('cart-total').textContent = 'Total: $' + total.toFixed(2);
+    }
+
+    function placeOrder() {
+      alert('¡Gracias por tu pedido!');
+      // Aquí puedes añadir la lógica para enviar el pedido al servidor o procesarlo de alguna manera
     }
   </script>
 </body>
