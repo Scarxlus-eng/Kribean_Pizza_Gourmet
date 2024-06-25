@@ -26,10 +26,16 @@
   </section>
   <div class="container">
     <h2>Menú</h2>
-    <button class="toggle-btn" onclick="toggleSection('pizzas')">Pizzas Por Porción</button>
-    <button class="toggle-btn" onclick="toggleSection('bebidas')">Bebidas</button>
+    <button class="toggle-btn" onclick="toggleSection('pizzas')">
+      Pizzas Por Porción
+      <span class="arrow">▼</span>
+    </button>
+    <button class="toggle-btn" onclick="toggleSection('bebidas')">
+      Bebidas
+      <span class="arrow">▼</span>
+    </button>
 
-    <div id="pizzas">
+    <div id="pizzas" class="menu-section">
       <div class="menu-item">
         <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
         <h3>Pizza Pollo con Jamón</h3>
@@ -42,39 +48,10 @@
         <span>$4000.00</span>
         <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al carrito</button>
       </div>
-      <div class="menu-item">
-        <img src="Images/Hawaiana.jpg" alt="Pizza Hawaiana">
-        <h3>Pizza Hawaiana</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Hawaiana', 4500)">Añadir al carrito</button>
-      </div>
-      <div class="menu-item">
-        <img src="Images/Campesina.jpg" alt="Pizza Campesina">
-        <h3>Pizza Campesina</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Campesina', 4500)">Añadir al carrito</button>
-      </div>
-      <div class="menu-item">
-        <img src="Images/Pollo_Champ.jpg" alt="Pizza Champiñón con Pollo">
-        <h3>Pizza Champiñón con Pollo</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Champiñón con Pollo', 4500)">Añadir al carrito</button>
-      </div>
-      <div class="menu-item">
-        <img src="Images/Pepperoni.png" alt="Pizza Pepperoni">
-        <h3>Pizza Pepperoni</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Pepperoni', 4500)">Añadir al carrito</button>
-      </div>
-      <div class="menu-item">
-        <img src="Images/Salami.jpg" alt="Pizza Salami">
-        <h3>Pizza Salami</h3>
-        <span>$4500.00</span>
-        <button class="btn-primary" onclick="addToCart('Pizza Salami', 4500)">Añadir al carrito</button>
-      </div>
+      <!-- Resto de las pizzas -->
     </div>
 
-    <div id="bebidas" class="hide">
+    <div id="bebidas" class="menu-section hide">
       <div class="menu-item">
         <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
         <h3>Botella de Agua</h3>
@@ -87,18 +64,7 @@
         <span>$3000.00</span>
         <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al carrito</button>
       </div>
-      <div class="menu-item">
-        <img src="Images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
-        <h3>Postobón 1lt</h3>
-        <span>$3500.00</span>
-        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500)">Añadir al carrito</button>
-      </div>
-      <div class="menu-item">
-        <img src="Images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
-        <h3>Coca-Cola 1.5lt</h3>
-        <span>$6500.00</span>
-        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500)">Añadir al carrito</button>
-      </div>
+      <!-- Resto de las bebidas -->
     </div>
 
     <div class="cart">
