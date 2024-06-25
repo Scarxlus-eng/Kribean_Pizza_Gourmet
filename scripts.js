@@ -1,9 +1,36 @@
 let cart = [];
 let total = 0;
 
-function addToCart(name, price) {
-  cart.push({name, price});
-  updateCart();
+function toggleSection(sectionId) {
+  const section = document.getElementById(sectionId);
+  const sections = document.querySelectorAll('.menu-section');
+
+  sections.forEach(sec => {
+    if (sec !== section) {
+      sec.style.display = 'none';
+    }
+  });
+
+  section.style.display = section.style.display === 'block' ? 'none' : 'block';
+}
+
+function changeQuantity(inputId, delta) {
+  const input = document.getElementById(inputId);
+  let value = parseInt(input.value) + delta;
+  if (value < 0) value = 0;
+  if (value > 50) value = 50;
+  input.value = value;
+}
+
+function addToCart(name, price, inputId) {
+  const quantity = parseInt(document.getElementById(inputId).value);
+  if (quantity > 0) {
+    for (let i = 0; i < quantity; i++) {
+      cart.push({ name, price });
+    }
+    updateCart();
+    document.getElementById(inputId).value = 0;
+  }
 }
 
 function removeFromCart(index) {
