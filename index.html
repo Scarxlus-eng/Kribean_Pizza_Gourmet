@@ -311,32 +311,46 @@
       }
     }
 
-    // Función para manejar el formulario de pedido
-    function placeOrder() {
-      var orderForm = document.getElementById('orderForm');
-      var cartTotal = document.getElementById('total').innerText;
+    <script>
+  // Función para manejar el formulario de pedido
+  function placeOrder() {
+    var orderForm = document.getElementById('orderForm');
+    var cartTotal = document.getElementById('total').innerText;
 
-      document.getElementById('cart').style.display = 'none';
-      document.getElementById('order-form').style.display = 'block';
+    orderForm.addEventListener('submit', function(event) {
+      event.preventDefault();
 
-      orderForm.addEventListener('submit', function(event) {
-        event.preventDefault();
-
-        var formData = new FormData(orderForm);
-        var orderData = {};
-        formData.forEach(function(value, key){
-          orderData[key] = value;
-        });
-
-        orderData['total'] = cartTotal;
-
-        // Aquí puedes enviar los datos del pedido a través de WhatsApp u otro método de tu preferencia
-        console.log('Datos del pedido:', orderData);
-        alert('Pedido realizado con éxito. ¡Gracias por tu compra!');
-        window.location.reload();
+      var formData = new FormData(orderForm);
+      var orderData = {};
+      formData.forEach(function(value, key){
+        orderData[key] = value;
       });
-    }
-  </script>
 
+      orderData['total'] = cartTotal;
+
+      // Aquí puedes enviar los datos del pedido a través de WhatsApp u otro método de tu preferencia
+      console.log('Datos del pedido:', orderData);
+      alert('Pedido realizado con éxito. ¡Gracias por tu compra!');
+      
+      // Construir el enlace de WhatsApp con los datos del pedido
+      var phoneNumber = '573186687044'; // Número de WhatsApp
+      var message = encodeURIComponent(`Hola, quiero hacer un pedido.\n\nDetalles del pedido:\n${formatOrderData(orderData)}\nTotal: $${cartTotal}`);
+
+      var whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
+
+      // Redirigir a WhatsApp
+      window.location.href = whatsappLink;
+    });
+  }
+
+  // Función para formatear los datos del pedido
+  function formatOrderData(orderData) {
+    var formattedData = '';
+    for (var key in orderData) {
+      formattedData += `${key}: ${orderData[key]}\n`;
+    }
+    return formattedData;
+  }
+</script>
 </body>
 </html>
