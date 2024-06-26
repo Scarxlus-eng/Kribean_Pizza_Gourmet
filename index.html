@@ -178,179 +178,117 @@
         <button class="btn-primary" onclick="addToCart('Botella de Agua', 800, 'drink1')">Añadir al carrito</button>
       </div>
       <div class="menu-item">
-        <img src="Images/COCA-COLA.webp" alt="Botella de Coca-Cola">
-        <h3>Botella de Coca-Cola</h3>
-        <span>$2500.00</span>
+        <img src="Images/hit-500ml.jpeg" alt="Hit">
+        <h3>Hit</h3>
+        <span>$3000.00</span>
         <div class="quantity-control">
           <button onclick="changeQuantity('drink2', -1)">-</button>
           <input type="number" id="drink2" value="0" min="0" max="50" readonly>
           <button onclick="changeQuantity('drink2', 1)">+</button>
         </div>
-        <button class="btn-primary" onclick="addToCart('Botella de Coca-Cola', 2500, 'drink2')">Añadir al carrito</button>
+        <button class="btn-primary" onclick="addToCart('Hit', 3000, 'drink2')">Añadir al carrito</button>
       </div>
       <div class="menu-item">
-        <img src="Images/JUGO.webp" alt="Jugo">
-        <h3>Jugo</h3>
-        <span>$2000.00</span>
+        <img src="Images/Gaseosa-Postobon-1.5-lt.png" alt="Postobón 1lt">
+        <h3>Postobón 1lt</h3>
+        <span>$3500.00</span>
         <div class="quantity-control">
           <button onclick="changeQuantity('drink3', -1)">-</button>
           <input type="number" id="drink3" value="0" min="0" max="50" readonly>
           <button onclick="changeQuantity('drink3', 1)">+</button>
         </div>
-        <button class="btn-primary" onclick="addToCart('Jugo', 2000, 'drink3')">Añadir al carrito</button>
+        <button class="btn-primary" onclick="addToCart('Postobón 1lt', 3500, 'drink3')">Añadir al carrito</button>
       </div>
       <div class="menu-item">
-        <img src="Images/PONY_MALTA.webp" alt="Pony Malta">
-        <h3>Pony Malta</h3>
-        <span>$1500.00</span>
+        <img src="Images/gaseosa-coca-cola-15-lt.jpg" alt="Coca-Cola 1.5lt">
+        <h3>Coca-Cola 1.5lt</h3>
+        <span>$6500.00</span>
         <div class="quantity-control">
           <button onclick="changeQuantity('drink4', -1)">-</button>
           <input type="number" id="drink4" value="0" min="0" max="50" readonly>
           <button onclick="changeQuantity('drink4', 1)">+</button>
         </div>
-        <button class="btn-primary" onclick="addToCart('Pony Malta', 1500, 'drink4')">Añadir al carrito</button>
+        <button class="btn-primary" onclick="addToCart('Coca-Cola 1.5lt', 6500, 'drink4')">Añadir al carrito</button>
       </div>
     </div>
+  </div>
 
-    <div id="cart">
-      <h2>Carrito de Compras</h2>
-      <div id="cart-items"></div>
-      <div id="cart-total">
-        Total: $<span id="total">0.00</span>
-      </div>
-      <button class="btn-primary" onclick="placeOrder()">Realizar Pedido</button>
-    </div>
-
-    <div id="order-form" style="display: none;">
-      <h2>Formulario de Pedido</h2>
-      <form id="orderForm">
-        <label for="name">Nombre:</label><br>
-        <input type="text" id="name" name="name" required><br><br>
-
-        <label for="delivery">Tipo de Pedido:</label><br>
-        <select id="delivery" name="delivery" onchange="togglePaymentOptions()">
-          <option value="domicilio">Domicilio</option>
-          <option value="comer_en_lugar">Comer en el Lugar</option>
-          <option value="recoger">Recoger</option>
-        </select><br><br>
-
-        <div id="paymentOptions" style="display: none;">
-          <label for="paymentMethod">Forma de Pago:</label><br>
-          <select id="paymentMethod" name="paymentMethod">
-            <option value="efectivo">Efectivo</option>
-            <option value="bancolombia">Ahorro Bancolombia</option>
-          </select><br><br>
-
-          <div id="bancolombiaInfo" style="display: none;">
-            <label for="accountNumber">Número de Cuenta Bancolombia:</label><br>
-            <input type="text" id="accountNumber" name="accountNumber"><br><br>
-          </div>
-
-          <label for="address">Dirección de Entrega:</label><br>
-          <input type="text" id="address" name="address"><br><br>
-        </div>
-
-        <button class="btn-primary" type="submit">Enviar Pedido</button>
-      </form>
-    </div>
-
+  <div id="cart">
+    <h2>Carrito</h2>
+    <div id="cart-items"></div>
+    <div id="cart-total"></div>
+    <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
   </div>
 
   <script>
-    // Función para mostrar/ocultar secciones del menú
+    let cart = [];
+    let total = 0;
+
     function toggleSection(sectionId) {
-      var section = document.getElementById(sectionId);
-      if (section.style.display === "none") {
-        section.style.display = "block";
-      } else {
-        section.style.display = "none";
-      }
+      const sections = document.querySelectorAll('.menu-section');
+      sections.forEach(section => {
+        if (section.id === sectionId) {
+          section.style.display = section.style.display === 'none' ? 'block' : 'none';
+        } else {
+          section.style.display = 'none';
+        }
+      });
     }
 
-    // Función para cambiar la cantidad en el carrito
-    function changeQuantity(inputId, increment) {
-      var input = document.getElementById(inputId);
-      var newValue = parseInt(input.value) + increment;
-      if (newValue >= 0 && newValue <= 50) {
-        input.value = newValue;
-      }
+    function changeQuantity(id, delta) {
+      const input = document.getElementById(id);
+      let value = parseInt(input.value) + delta;
+      if (value < 0) value = 0;
+      if (value > 50) value = 50;
+      input.value = value;
     }
 
-    // Función para añadir un producto al carrito
-    function addToCart(itemName, price, inputId) {
-      var quantity = parseInt(document.getElementById(inputId).value);
+    function addToCart(name, price, quantityId) {
+      const quantity = document.getElementById(quantityId).value;
       if (quantity > 0) {
-        var cartItems = document.getElementById('cart-items');
-        var itemDiv = document.createElement('div');
-        itemDiv.innerHTML = `${itemName} x ${quantity} - $${price * quantity}`;
-        cartItems.appendChild(itemDiv);
-
-        var totalElement = document.getElementById('total');
-        var currentTotal = parseFloat(totalElement.innerText);
-        totalElement.innerText = (currentTotal + price * quantity).toFixed(2);
-
-        // Reset quantity input
-        document.getElementById(inputId).value = 0;
+        for (let i = 0; i < quantity; i++) {
+          cart.push({name, price});
+        }
+        updateCart();
       }
     }
 
-    // Función para mostrar las opciones de pago según el tipo de pedido
-    function togglePaymentOptions() {
-      var deliveryType = document.getElementById('delivery').value;
-      var paymentOptions = document.getElementById('paymentOptions');
-      var bancolombiaInfo = document.getElementById('bancolombiaInfo');
-      var addressInput = document.getElementById('address');
-
-      if (deliveryType === 'domicilio') {
-        paymentOptions.style.display = 'block';
-        addressInput.required = true;
-      } else {
-        paymentOptions.style.display = 'none';
-        bancolombiaInfo.style.display = 'none';
-        addressInput.required = false;
-      }
+    function removeFromCart(index) {
+      cart.splice(index, 1);
+      updateCart();
     }
 
-    <script>
-  // Función para manejar el formulario de pedido
-  function placeOrder() {
-    var orderForm = document.getElementById('orderForm');
-    var cartTotal = document.getElementById('total').innerText;
+    function updateCart() {
+      const cartItems = document.getElementById('cart-items');
+      cartItems.innerHTML = '';
+      total = 0;
 
-    orderForm.addEventListener('submit', function(event) {
-      event.preventDefault();
-
-      var formData = new FormData(orderForm);
-      var orderData = {};
-      formData.forEach(function(value, key){
-        orderData[key] = value;
+      cart.forEach((item, index) => {
+        total += item.price;
+        const cartItem = document.createElement('div');
+        cartItem.innerHTML = `
+          <span>${item.name} - $${item.price.toFixed(2)}</span>
+          <button onclick="removeFromCart(${index})">Eliminar</button>
+        `;
+        cartItems.appendChild(cartItem);
       });
 
-      orderData['total'] = cartTotal;
-
-      // Aquí puedes enviar los datos del pedido a través de WhatsApp u otro método de tu preferencia
-      console.log('Datos del pedido:', orderData);
-      alert('Pedido realizado con éxito. ¡Gracias por tu compra!');
-      
-      // Construir el enlace de WhatsApp con los datos del pedido
-      var phoneNumber = '573186687044'; // Número de WhatsApp
-      var message = encodeURIComponent(`Hola, quiero hacer un pedido.\n\nDetalles del pedido:\n${formatOrderData(orderData)}\nTotal: $${cartTotal}`);
-
-      var whatsappLink = `https://wa.me/${phoneNumber}?text=${message}`;
-
-      // Redirigir a WhatsApp
-      window.location.href = whatsappLink;
-    });
-  }
-
-  // Función para formatear los datos del pedido
-  function formatOrderData(orderData) {
-    var formattedData = '';
-    for (var key in orderData) {
-      formattedData += `${key}: ${orderData[key]}\n`;
+      document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
     }
-    return formattedData;
-  }
-</script>
+
+    function placeOrder() {
+      if (cart.length === 0) {
+        alert('El carrito está vacío');
+        return;
+      }
+
+      const orderDetails = cart.map(item => item.name).join(', ');
+      const whatsappNumber = "+573186687044";
+      const message = `Hola, me gustaría ordenar lo siguiente: ${orderDetails}. Total: $${total.toFixed(2)}`;
+      const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+      window.open(whatsappUrl, '_blank');
+    }
+  </script>
 </body>
 </html>
