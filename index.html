@@ -8,84 +8,81 @@
   <link rel="icon" href="Images/Logo.icon">
 </head>
 <body>
+  <!-- Encabezado -->
   <header class="header">
     <div class="container">
-      <img src="Images/Logo.png" alt="K'ribean Logo" class="logo">
+      <div class="logo">
+        <img src="Images/Logo.png" alt="K'ribean Pizza Gourmet">
+      </div>
       <nav class="nav">
         <ul>
-          <li><a href="#pizzas" onclick="showSection('pizzas')">Pizzas</a></li>
-          <li><a href="#bebidas" onclick="showSection('bebidas')">Bebidas</a></li>
-          <li><a href="#carrito" onclick="showSection('carrito')">Carrito</a></li>
+          <li><a href="#menu">Menú</a></li>
+          <li><a href="#carrito">Carrito</a></li>
+          <li><a href="#contacto">Contacto</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main>
-    <!-- Sección de bienvenida -->
-    <section class="hero">
-      <div class="container">
-        <h1>¡Bienvenidos a K'ribean Pizza Gourmet!</h1>
-        <p>"Un Menú para Recorrer los Sabores que Llevamos a Tu Mesa"</p>
-        <button class="btn-primary" onclick="showSection('pizzas')">Ver Menú de Pizzas</button>
-      </div>
-    </section>
+  <!-- Hero/Bienvenida -->
+  <section class="hero">
+    <div class="container">
+      <h1>¡Bienvenido a K'ribean Pizza Gourmet!</h1>
+      <p>Descubre los mejores sabores en nuestro exclusivo menú.</p>
+      <a href="#menu" class="btn-primary">Explorar Menú</a>
+    </div>
+  </section>
 
-    <!-- Sección de Pizzas -->
-    <section id="pizzas" class="menu-section hidden">
-      <div class="container">
-        <h2>Menú de Pizzas</h2>
-        <div class="menu-grid">
-          <div class="card">
-            <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
-            <h3>Pizza Pollo con Jamón</h3>
-            <p>$4000.00</p>
-            <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir al Carrito</button>
-          </div>
-          <div class="card">
-            <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
-            <h3>Pizza Jamón con Queso</h3>
-            <p>$4000.00</p>
-            <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al Carrito</button>
-          </div>
-          <!-- Más pizzas aquí -->
+  <!-- Menú -->
+  <section id="menu" class="menu-section">
+    <div class="container">
+      <h2>Menú</h2>
+      <div class="menu-categories">
+        <button class="btn-category" onclick="showCategory('pizzas')">Pizzas</button>
+        <button class="btn-category" onclick="showCategory('bebidas')">Bebidas</button>
+      </div>
+      <div id="pizzas" class="menu-items">
+        <div class="menu-item">
+          <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
+          <h3>Pizza Pollo con Jamón</h3>
+          <p>$4000.00</p>
+          <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir</button>
+        </div>
+        <div class="menu-item">
+          <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
+          <h3>Pizza Jamón con Queso</h3>
+          <p>$4000.00</p>
+          <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir</button>
         </div>
       </div>
-    </section>
-
-    <!-- Sección de Bebidas -->
-    <section id="bebidas" class="menu-section hidden">
-      <div class="container">
-        <h2>Menú de Bebidas</h2>
-        <div class="menu-grid">
-          <div class="card">
-            <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
-            <h3>Botella de Agua</h3>
-            <p>$800.00</p>
-            <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir al Carrito</button>
-          </div>
-          <div class="card">
-            <img src="Images/hit-500ml.jpeg" alt="Hit">
-            <h3>Hit</h3>
-            <p>$3000.00</p>
-            <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al Carrito</button>
-          </div>
-          <!-- Más bebidas aquí -->
+      <div id="bebidas" class="menu-items hidden">
+        <div class="menu-item">
+          <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
+          <h3>Botella de Agua</h3>
+          <p>$800.00</p>
+          <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir</button>
+        </div>
+        <div class="menu-item">
+          <img src="Images/hit-500ml.jpeg" alt="Hit">
+          <h3>Hit</h3>
+          <p>$3000.00</p>
+          <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir</button>
         </div>
       </div>
-    </section>
+    </div>
+  </section>
 
-    <!-- Carrito -->
-    <section id="carrito" class="carrito-section hidden">
-      <div class="container">
-        <h2>Carrito de Compras</h2>
-        <div id="cart-items"></div>
-        <p id="cart-total">Total: $0.00</p>
-        <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
-      </div>
-    </section>
-  </main>
+  <!-- Carrito -->
+  <section id="carrito" class="carrito-section">
+    <div class="container">
+      <h2>Carrito de Compras</h2>
+      <div id="cart-items"></div>
+      <p id="cart-total">Total: $0.00</p>
+      <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
+    </div>
+  </section>
 
+  <!-- Footer -->
   <footer class="footer">
     <div class="container">
       <p>&copy; 2025 K'ribean Pizza Gourmet. Todos los derechos reservados.</p>
