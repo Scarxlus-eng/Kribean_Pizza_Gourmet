@@ -13,31 +13,26 @@
       <img src="Images/Logo.png" alt="K'ribean Logo" class="logo">
       <nav class="nav">
         <ul>
-          <li><a href="#pizzas">Pizzas</a></li>
-          <li><a href="#bebidas">Bebidas</a></li>
-          <li><a href="#registro">Registro</a></li>
-          <li><a href="#carrito">Carrito</a></li>
+          <li><a href="#pizzas" onclick="showSection('pizzas')">Pizzas</a></li>
+          <li><a href="#bebidas" onclick="showSection('bebidas')">Bebidas</a></li>
+          <li><a href="#carrito" onclick="showSection('carrito')">Carrito</a></li>
         </ul>
       </nav>
-      <div class="contact-info">
-        <p>Tel: +57 3113982576</p>
-        <p>Tel: +57 3186687044</p>
-      </div>
     </div>
   </header>
 
   <main>
     <!-- Sección de bienvenida -->
-    <section class="hero" id="inicio">
+    <section class="hero">
       <div class="container">
         <h1>¡Bienvenidos a K'ribean Pizza Gourmet!</h1>
         <p>"Un Menú para Recorrer los Sabores que Llevamos a Tu Mesa"</p>
-        <button class="btn-primary" onclick="scrollToSection('pizzas')">Ver Menú</button>
+        <button class="btn-primary" onclick="showSection('pizzas')">Ver Menú de Pizzas</button>
       </div>
     </section>
 
     <!-- Sección de Pizzas -->
-    <section id="pizzas" class="menu-section">
+    <section id="pizzas" class="menu-section hidden">
       <div class="container">
         <h2>Menú de Pizzas</h2>
         <div class="menu-grid">
@@ -53,13 +48,13 @@
             <p>$4000.00</p>
             <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al Carrito</button>
           </div>
-          <!-- Más pizzas... -->
+          <!-- Más pizzas aquí -->
         </div>
       </div>
     </section>
 
     <!-- Sección de Bebidas -->
-    <section id="bebidas" class="menu-section">
+    <section id="bebidas" class="menu-section hidden">
       <div class="container">
         <h2>Menú de Bebidas</h2>
         <div class="menu-grid">
@@ -75,26 +70,13 @@
             <p>$3000.00</p>
             <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al Carrito</button>
           </div>
-          <!-- Más bebidas... -->
+          <!-- Más bebidas aquí -->
         </div>
       </div>
     </section>
 
-    <!-- Registro -->
-    <section id="registro" class="registro-section">
-      <div class="container">
-        <h2>Registro de Personas</h2>
-        <form>
-          <input type="text" placeholder="Nombre" required>
-          <input type="email" placeholder="Correo Electrónico" required>
-          <input type="tel" placeholder="Teléfono" required>
-          <button type="submit" class="btn-primary">Registrar</button>
-        </form>
-      </div>
-    </section>
-
     <!-- Carrito -->
-    <section id="carrito" class="carrito-section">
+    <section id="carrito" class="carrito-section hidden">
       <div class="container">
         <h2>Carrito de Compras</h2>
         <div id="cart-items"></div>
