@@ -5,249 +5,111 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>K'ribean Pizza Gourmet</title>
   <link rel="stylesheet" href="styles.css">
-  <link rel="icon" href="Images/Logo.icon"> <!-- Añadir favicon -->
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
-      background-color: #f9f9f9;
-      color: #333;
-    }
-    header {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 20px;
-      background-color: #ff5722;
-      color: white;
-    }
-    header img {
-      width: 150px;
-      height: auto;
-    }
-    header .contact-info {
-      text-align: right;
-    }
-    header .contact-info div {
-      margin: 5px 0;
-    }
-    .tabs {
-      display: flex;
-      justify-content: center;
-      background-color: #ff5722;
-      padding: 10px 0;
-    }
-    .tabs button {
-      background-color: #ff5722;
-      color: white;
-      border: none;
-      padding: 15px 20px;
-      cursor: pointer;
-      font-size: 16px;
-    }
-    .tabs button:hover {
-      background-color: #e64a19;
-    }
-    .tabs button.active {
-      background-color: #d84315;
-    }
-    .content-section {
-      display: none;
-      padding: 20px;
-      animation: fadeIn 0.5s;
-    }
-    .content-section.active {
-      display: block;
-    }
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-      }
-      to {
-        opacity: 1;
-      }
-    }
-    .menu-item {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border: 1px solid #ddd;
-      padding: 15px;
-      margin-bottom: 10px;
-      border-radius: 8px;
-      background-color: white;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    }
-    .menu-item img {
-      width: 80px;
-      height: 80px;
-      object-fit: cover;
-      border-radius: 8px;
-      margin-right: 15px;
-    }
-    .menu-item h3 {
-      margin: 0;
-      font-size: 18px;
-    }
-    .menu-item span {
-      font-size: 16px;
-      font-weight: bold;
-      color: #007BFF;
-    }
-    .menu-item .quantity-control {
-      display: flex;
-      align-items: center;
-    }
-    .menu-item .quantity-control button {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      padding: 5px 10px;
-      border-radius: 4px;
-      cursor: pointer;
-    }
-    .menu-item .quantity-control button:hover {
-      background-color: #0056b3;
-    }
-    .menu-item .quantity-control input {
-      width: 40px;
-      text-align: center;
-      margin: 0 5px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-    }
-    .btn-primary {
-      background-color: #007BFF;
-      color: white;
-      border: none;
-      padding: 10px 15px;
-      cursor: pointer;
-      border-radius: 4px;
-      font-size: 14px;
-    }
-    .btn-primary:hover {
-      background-color: #0056b3;
-    }
-    .form-section {
-      margin-top: 20px;
-    }
-    .form-section input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 10px;
-      border: 1px solid #ddd;
-      border-radius: 4px;
-    }
-    .form-section button {
-      width: 100%;
-      background-color: #28a745;
-      color: white;
-      border: none;
-      padding: 10px;
-      cursor: pointer;
-      font-size: 16px;
-      border-radius: 4px;
-    }
-    .form-section button:hover {
-      background-color: #218838;
-    }
-  </style>
+  <link rel="icon" href="Images/Logo.icon">
 </head>
 <body>
-  <header>
-    <img src="Images/Logo.png" alt="Logo">
-    <div class="contact-info">
-      <div>CONTÁCTANOS</div>
-      <div>+57 3113982576</div>
-      <div>+57 3186687044</div>
+  <header class="header">
+    <div class="container">
+      <img src="Images/Logo.png" alt="K'ribean Logo" class="logo">
+      <nav class="nav">
+        <ul>
+          <li><a href="#pizzas">Pizzas</a></li>
+          <li><a href="#bebidas">Bebidas</a></li>
+          <li><a href="#registro">Registro</a></li>
+          <li><a href="#carrito">Carrito</a></li>
+        </ul>
+      </nav>
+      <div class="contact-info">
+        <p>Tel: +57 3113982576</p>
+        <p>Tel: +57 3186687044</p>
+      </div>
     </div>
   </header>
 
-  <div class="tabs">
-    <button class="tab-link active" onclick="openTab('pizzas')">Pizzas</button>
-    <button class="tab-link" onclick="openTab('bebidas')">Bebidas</button>
-    <button class="tab-link" onclick="openTab('registro')">Registro de Personas</button>
-  </div>
-
-  <div id="pizzas" class="content-section active">
-    <h2>Menú de Pizzas</h2>
-    <div class="menu-item">
-      <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
-      <h3>Pizza Pollo con Jamón</h3>
-      <span>$4000.00</span>
-      <div class="quantity-control">
-        <button onclick="changeQuantity('pizza1', -1)">-</button>
-        <input type="number" id="pizza1" value="0" min="0" max="50" readonly>
-        <button onclick="changeQuantity('pizza1', 1)">+</button>
+  <main>
+    <!-- Sección de bienvenida -->
+    <section class="hero" id="inicio">
+      <div class="container">
+        <h1>¡Bienvenidos a K'ribean Pizza Gourmet!</h1>
+        <p>"Un Menú para Recorrer los Sabores que Llevamos a Tu Mesa"</p>
+        <button class="btn-primary" onclick="scrollToSection('pizzas')">Ver Menú</button>
       </div>
-      <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000, 'pizza1')">Añadir</button>
-    </div>
-    <!-- Más pizzas aquí -->
-  </div>
+    </section>
 
-  <div id="bebidas" class="content-section">
-    <h2>Menú de Bebidas</h2>
-    <div class="menu-item">
-      <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
-      <h3>Botella de Agua</h3>
-      <span>$800.00</span>
-      <div class="quantity-control">
-        <button onclick="changeQuantity('drink1', -1)">-</button>
-        <input type="number" id="drink1" value="0" min="0" max="50" readonly>
-        <button onclick="changeQuantity('drink1', 1)">+</button>
+    <!-- Sección de Pizzas -->
+    <section id="pizzas" class="menu-section">
+      <div class="container">
+        <h2>Menú de Pizzas</h2>
+        <div class="menu-grid">
+          <div class="card">
+            <img src="Images/Pollo.jpg" alt="Pizza Pollo con Jamón">
+            <h3>Pizza Pollo con Jamón</h3>
+            <p>$4000.00</p>
+            <button class="btn-primary" onclick="addToCart('Pizza Pollo con Jamón', 4000)">Añadir al Carrito</button>
+          </div>
+          <div class="card">
+            <img src="Images/Jamon.jpg" alt="Pizza Jamón con Queso">
+            <h3>Pizza Jamón con Queso</h3>
+            <p>$4000.00</p>
+            <button class="btn-primary" onclick="addToCart('Pizza Jamón con Queso', 4000)">Añadir al Carrito</button>
+          </div>
+          <!-- Más pizzas... -->
+        </div>
       </div>
-      <button class="btn-primary" onclick="addToCart('Botella de Agua', 800, 'drink1')">Añadir</button>
+    </section>
+
+    <!-- Sección de Bebidas -->
+    <section id="bebidas" class="menu-section">
+      <div class="container">
+        <h2>Menú de Bebidas</h2>
+        <div class="menu-grid">
+          <div class="card">
+            <img src="Images/AGUA-CRISTAL_F.webp" alt="Botella de Agua">
+            <h3>Botella de Agua</h3>
+            <p>$800.00</p>
+            <button class="btn-primary" onclick="addToCart('Botella de Agua', 800)">Añadir al Carrito</button>
+          </div>
+          <div class="card">
+            <img src="Images/hit-500ml.jpeg" alt="Hit">
+            <h3>Hit</h3>
+            <p>$3000.00</p>
+            <button class="btn-primary" onclick="addToCart('Hit', 3000)">Añadir al Carrito</button>
+          </div>
+          <!-- Más bebidas... -->
+        </div>
+      </div>
+    </section>
+
+    <!-- Registro -->
+    <section id="registro" class="registro-section">
+      <div class="container">
+        <h2>Registro de Personas</h2>
+        <form>
+          <input type="text" placeholder="Nombre" required>
+          <input type="email" placeholder="Correo Electrónico" required>
+          <input type="tel" placeholder="Teléfono" required>
+          <button type="submit" class="btn-primary">Registrar</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Carrito -->
+    <section id="carrito" class="carrito-section">
+      <div class="container">
+        <h2>Carrito de Compras</h2>
+        <div id="cart-items"></div>
+        <p id="cart-total">Total: $0.00</p>
+        <button class="btn-primary" onclick="placeOrder()">Hacer Pedido</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>&copy; 2025 K'ribean Pizza Gourmet. Todos los derechos reservados.</p>
     </div>
-    <!-- Más bebidas aquí -->
-  </div>
+  </footer>
 
-  <div id="registro" class="content-section">
-    <h2>Registro de Personas</h2>
-    <div class="form-section">
-      <input type="text" placeholder="Nombre" id="nombre">
-      <input type="email" placeholder="Correo Electrónico" id="email">
-      <input type="tel" placeholder="Teléfono" id="telefono">
-      <button onclick="registerPerson()">Registrar</button>
-    </div>
-  </div>
-
-  <script>
-    function openTab(tabId) {
-      const sections = document.querySelectorAll('.content-section');
-      const tabs = document.querySelectorAll('.tab-link');
-      sections.forEach(section => section.classList.remove('active'));
-      tabs.forEach(tab => tab.classList.remove('active'));
-      document.getElementById(tabId).classList.add('active');
-      document.querySelector(`.tab-link[onclick="openTab('${tabId}')"]`).classList.add('active');
-    }
-
-    function changeQuantity(id, delta) {
-      const input = document.getElementById(id);
-      let value = parseInt(input.value) + delta;
-      if (value < 0) value = 0;
-      if (value > 50) value = 50;
-      input.value = value;
-    }
-
-    function addToCart(name, price, quantityId) {
-      const quantity = document.getElementById(quantityId).value;
-      if (quantity > 0) {
-        alert(`Añadido al carrito: ${name} x${quantity}`);
-      }
-    }
-
-    function registerPerson() {
-      const nombre = document.getElementById('nombre').value;
-      const email = document.getElementById('email').value;
-      const telefono = document.getElementById('telefono').value;
-      if (nombre && email && telefono) {
-        alert(`Registro exitoso: ${nombre}, ${email}, ${telefono}`);
-      } else {
-        alert('Por favor completa todos los campos.');
-      }
-    }
-  </script>
+  <script src="scripts.js"></script>
 </body>
 </html>
