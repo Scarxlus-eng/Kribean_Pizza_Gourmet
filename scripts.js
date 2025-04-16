@@ -1,15 +1,13 @@
-// Mostrar y ocultar secciones dinámicamente
-function showSection(sectionId) {
-  // Ocultar todas las secciones
-  const sections = document.querySelectorAll('section');
-  sections.forEach(section => section.classList.add('hidden'));
+// Mostrar y ocultar categorías
+function showCategory(category) {
+  const allCategories = document.querySelectorAll('.menu-items');
+  allCategories.forEach(cat => cat.classList.add('hidden'));
 
-  // Mostrar la sección seleccionada
-  const sectionToShow = document.getElementById(sectionId);
-  sectionToShow.classList.remove('hidden');
+  const selectedCategory = document.getElementById(category);
+  selectedCategory.classList.remove('hidden');
 }
 
-// Lógica del carrito
+// Carrito de compras
 let cart = [];
 let total = 0;
 
@@ -48,9 +46,5 @@ function placeOrder() {
   }
 
   const orderDetails = cart.map(item => item.name).join(', ');
-  const whatsappNumber = "+573186687044";
-  const message = `Hola, me gustaría ordenar lo siguiente: ${orderDetails}. Total: $${total.toFixed(2)}`;
-  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-
-  window.open(whatsappUrl, '_blank');
+  alert(`Pedido realizado: ${orderDetails}\nTotal: $${total.toFixed(2)}`);
 }
