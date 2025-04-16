@@ -1,16 +1,20 @@
+// Mostrar y ocultar secciones dinámicamente
+function showSection(sectionId) {
+  // Ocultar todas las secciones
+  const sections = document.querySelectorAll('section');
+  sections.forEach(section => section.classList.add('hidden'));
+
+  // Mostrar la sección seleccionada
+  const sectionToShow = document.getElementById(sectionId);
+  sectionToShow.classList.remove('hidden');
+}
+
+// Lógica del carrito
 let cart = [];
 let total = 0;
 
-function addToCart(name, price, quantityId) {
-  const quantity = document.getElementById(quantityId).value;
-  if (quantity > 0) {
-    cart.push({name, price, quantity: parseInt(quantity)});
-    updateCart();
-  }
-}
-
-function removeFromCart(index) {
-  cart.splice(index, 1);
+function addToCart(name, price) {
+  cart.push({ name, price });
   updateCart();
 }
 
@@ -20,63 +24,33 @@ function updateCart() {
   total = 0;
 
   cart.forEach((item, index) => {
-    total += item.price * item.quantity;
-    cartItems.innerHTML += `
-      <div class="cart-item">
-        <span>${item.name}</span>
-        <span>$${item.price * item.quantity}</span>
-        <span>${item.quantity}</span>
-        <button class="btn-primary" onclick="removeFromCart(${index})">Quitar</button>
-      </div>
+    total += item.price;
+    const cartItem = document.createElement('div');
+    cartItem.innerHTML = `
+      <span>${item.name} - $${item.price.toFixed(2)}</span>
+      <button onclick="removeFromCart(${index})">Eliminar</button>
     `;
+    cartItems.appendChild(cartItem);
   });
 
   document.getElementById('cart-total').innerText = `Total: $${total.toFixed(2)}`;
 }
 
-function placeOrder() {
-  const name = prompt("Por favor, ingrese su nombre:");
-  if (!name) {
-    alert("Por favor ingrese su nombre para continuar con el pedido.");
-    return;
-  }
-
-  const deliveryOption = prompt("Especifique: 'Domicilio', 'Recoger' o 'En el lugar':");
-  let address = '';
-  if (deliveryOption && deliveryOption.toLowerCase() === 'domicilio') {
-    address = prompt("Por favor, ingrese su dirección:");
-    if (!address) {
-      alert("Por favor ingrese su dirección para el pedido a domicilio.");
-      return;
-    }
-  }
-
-  const paymentMethod = prompt("Método de pago: 'Bancolombia' o 'Efectivo':");
-  if (!paymentMethod) {
-    alert("Por favor seleccione un método de pago para continuar.");
-    return;
-  }
-
-  let paymentDetails = '';
-  if (paymentMethod.toLowerCase() === 'bancolombia') {
-    paymentDetails = "Haga el depósito a la cuenta de Bancolombia Ahorro a la Mano: 03186687044.";
-  }
-
-  let orderDetails = `Pedido de ${name}\nOpción de entrega: ${deliveryOption}\n`;
-  if (address) {
-    orderDetails += `Dirección: ${address}\n`;
-  }
-  orderDetails += `Método de pago: ${paymentMethod}\n${paymentDetails}\nTotal: $${total.toFixed(2)}\nProductos:\n`;
-
-  cart.forEach(item => {
-    orderDetails += `- ${item.name}: $${(item.price * item.quantity).toFixed(2)} x ${item.quantity}\n`;
-  });
-
-  const whatsappUrl = `https://api.whatsapp.com/send?phone=573186687044&text=${encodeURIComponent(orderDetails)}`;
-  window.open(whatsappUrl, '_blank'); // Abre el enlace en una nueva pestaña
+function removeFromCart(index) {
+  cart.splice(index, 1);
+  updateCart();
 }
 
-function clearCart() {
-  cart = [];
-  updateCart();
+function placeOrder() {
+  if (cart.length === 0) {
+    alert('El carrito está vacío');
+    return;
+  }
+
+  const orderDetails = cart.map(item => item.name).join(', ');
+  const whatsappNumber = "+573186687044";
+  const message = `Hola, me gustaría ordenar lo siguiente: ${orderDetails}. Total: $${total.toFixed(2)}`;
+  const whatsappUrl = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+
+  window.open(whatsappUrl, '_blank');
 }
